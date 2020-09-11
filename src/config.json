@@ -5,8 +5,8 @@
             "icon": "fas fa-home"
         },
         {
-            "id": "browser",
-            "icon": "fab fa-chrome"
+            "id": "webapps-dashboard",
+            "icon": "fas fa-car"
         },
         {
             "id": "webapps-hvac",
