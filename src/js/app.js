@@ -6,9 +6,19 @@ import Mustache from 'mustache';
 
 var template;
 var page = {
-
-};
-
+    speed: 50,
+    rpm: {
+        value: 2400,
+        percent: 0
+    },
+    isWarning: true,
+    fuel: {
+        percent: 75,
+        level: 14,
+        range: 650,
+        avg: 25.5
+    }
+}
 export function show() {
     document.body.innerHTML = Mustache.render(template, page);
     network.init(document.getElementById('NetworkContainer'));
