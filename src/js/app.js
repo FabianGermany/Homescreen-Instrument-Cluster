@@ -4,13 +4,21 @@ import * as apps from './apps';
 import * as time from './time';
 import Mustache from 'mustache';
 
+export function niceFormat(unformatted_number){
+    return unformatted_number.toLocaleString('de-DE')
+}
+
+var rpm_raw = 2400
+var rpm_formatted = niceFormat(rpm_raw)
+
 var template;
 var page = {
     speed: 50,
     rpm: {
-        value: 2400,
+        value: rpm_raw,
         percent: 0
     },
+    rpm_value_formatted: rpm_formatted,
     isWarning: true,
     fuel: {
         percent: 75,
@@ -19,6 +27,7 @@ var page = {
         avg: 25.5
     }
 }
+
 export function show() {
     document.body.innerHTML = Mustache.render(template, page);
     network.init(document.getElementById('NetworkContainer'));
@@ -35,3 +44,6 @@ export function init() {
         console.error('ERRROR loading main template', error);
     });
 }
+
+
+

@@ -1,35 +1,120 @@
-<div class="top"> <!--width is automatically 218px-->
+<head>
 
-    <!--todo container klasse machen wie appscontainer-->
-    <div class="xxxx" id="xxxxx">
+    <!--import Google Font "Inter"-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
 
-        <div class="col-12">
-            <span class="speed">
-                {{ speed }}
-            </span>
-            km/h
-        </div>
+
+    <style>
+
+        /*use Google font "Inter"*/
+        body{
+            font-family: 'Inter', sans-serif;
+        }
+
+        .center { /*vertically and horizontally centered*/ /*if only horizontally: use style-tag: text-align: center;*/
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        }
+
+        .outside-container { 
+    /*height: 200px;*/
+    position: relative;
+    }
+    </style>
+</head>>
+
+
+
+
+
+<body>
+    <div class="top" style="height: 398px"> <!--width is automatically 218px-->
+
+        <!--todo container klasse machen wie appscontainer wegen zentriert etc.-->
+        <!--todo speed sign: https://stackoverflow.com/questions/4861224/how-to-use-css-to-surround-a-number-with-a-circle-->
+        <div> <!-- class="xxxx" id="xxxxx"-->
+
+            <!--km/h-->
+            <div style="height: 132px">
+                <div style="height: 8px;"></div>
+                <div class="outside-container" style="height: 78px">
+                    <div class="center">
+                        <span style="font-size: 5.3rem; font-weight: bold; font-style: italic;">
+                            {{ speed }}
+                        </span>
+                    </div>
+                </div>
+                <div class="outside-container" style="height: 38px">
+                    <div class="center">
+                        <span style="font-size: 1.5rem; font-style: italic;"> 
+                            km/h
+                        </span>
+                    </div>
+                </div>
+                <div style="height: 8px;"></div>
+            </div>
+
+            <!--line-->
+            <div style="height: 1px; background-color: #B8C4E4;"></div>
+        
+            <!--rpm-->
+            <div style="height: 131px;">
+                <div style="height: 8px;"></div>
+                <div class="outside-container" style="height: 78px">
+                    <div class="center">
+                        <span style="font-size: 3.3rem; font-weight: bold; font-style: italic;">
+                            <!--{{ rpm.value }}-->
+                            {{ rpm_value_formatted }}
+                        </span>
+                    </div>
+                </div>
+                <div class="outside-container" style="height: 35px">
+                    <div class="center">
+                        <span style="font-size: 1.5rem; font-style: italic;"> 
+                            U/min
+                        </span>
+                    </div>
+                </div>
+                <div style="height: 10px;"></div>           
+            </div>
+
+            <!--line-->
+            <div style="height: 1px; background-color: #B8C4E4;"></div>
+
     
-        <div class="col-12">
-            <span class="speed">
-                {{ rpm.value }}
-            </span>
-            rpm
-        </div>
-    
-        <div class="col-12">
-            <span class="speed">
-                {{ fuel.level }}
-            </span>
-            Liter
+            <!--liter-->
+            <div style="height: 132px;">
+                <div style="height: 8px;"></div>
+                <div class="outside-container" style="height: 78px">
+                    <div class="center">
+                        <span style="font-size: 3.6rem; font-weight: bold; font-style: italic;">
+                            {{ fuel.level }}
+                        </span>
+                    </div>
+                </div>
+                <div class="outside-container" style="height: 38px">
+                    <div class="center">
+                        <span style="font-size: 1.5rem; font-style: italic;"> 
+                            Liter
+                        </span>
+                    </div>
+                </div>
+                <div style="height: 8px;"></div>          
+            </div>
+
         </div>
 
+
+        <!-- <div class="appsContainer" id="AppsContainer"></div>
+        <div class="infoContainer" id="TimeContainer"></div>
+        <div class="statusContainer" id="NetworkContainer"></div> -->
+    </div>
+    <div class="bottom">
     </div>
 
-
-    <div class="appsContainer" id="AppsContainer"></div>
-    <div class="infoContainer" id="TimeContainer"></div>
-    <div class="statusContainer" id="NetworkContainer"></div>
-</div>
-<div class="bottom">
-</div>
+</body>
