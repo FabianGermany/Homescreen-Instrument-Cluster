@@ -22,7 +22,7 @@ var page = {
     isWarning: true,
     fuel: {
         percent: 75,
-        level: 14,
+        level: 48,
         range: 650,
         avg: 25.5
     }
