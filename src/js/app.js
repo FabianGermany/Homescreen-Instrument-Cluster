@@ -22,7 +22,7 @@ var page = {
     isWarning: true,
     fuel: {
         percent: 75,
-        level: 48,
+        level: 48, //todo gucken ob Einheit Gallonen etc.
         range: 650,
         avg: 25.5
     }

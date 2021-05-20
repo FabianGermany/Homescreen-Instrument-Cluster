@@ -7,18 +7,10 @@
         {
             "id": "webapps-dashboard",
             "icon": "fas fa-car"
-        },
-        {
-            "id": "webapps-hvac",
-            "icon": "fas fa-thermometer-half"
-        },
-        {
-            "id": "webapps-mediaplayer",
-            "icon": "fas fa-music"
         }
     ],
     "background": "webapps-html5-background",
-    "launch": "webapps-html5-launcher",
+    "launch": "webapps-dashboard",
     "network": {
         "bluetooth": "fab fa-bluetooth-b",
         "ethernet": "fas fa-network-wired",
