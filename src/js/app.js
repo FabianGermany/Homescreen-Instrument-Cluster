@@ -3,6 +3,8 @@ import * as network from './network';
 import * as apps from './apps';
 import * as time from './time';
 import Mustache from 'mustache';
+import {  api, lowcan,signalcomposer  } from 'agl-js-api';
+
 
 export function niceFormat(unformatted_number){
     return unformatted_number.toLocaleString('de-DE')
@@ -28,6 +30,7 @@ var page = {
     }
 }
 
+
 export function show() {
     document.body.innerHTML = Mustache.render(template, page);
     network.init(document.getElementById('NetworkContainer'));
@@ -43,6 +46,62 @@ export function init() {
     }, function(error) {
         console.error('ERRROR loading main template', error);
     });
+
+    
+    //signal = {'signal': 'wantedsignal'[, 'options': {['average': nb_seconds,] ['minimum': nb_seconds,] ['maximum': nb_seconds] }]};
+    var signal_engine_speed = 'engine_speed';    // "diagnostic_messages.engine.speed"
+    var signal_vehicle_speed = 'vehicle_speed';    // "diagnostic_messages.vehicle.speed"
+    var signal_fuel_level = 'fuel_level';    // "diagnostic_messages.fuel.level"
+
+    console.log(signalcomposer.get(signal_engine_speed));
+    console.log(signalcomposer.list());
+    file = "../json/sig-demoboard.json"
+    signalcomposer.addObjects(file);
+    console.log(lowcan.get_list());
+    console.log(lowcan.get_signal("messages.hvac.temperature.left"));
+
+    lowcan.subscribe_by_event(function(data){
+        console.log("can subscribe_by_event engine speed CHANGED");
+        console.log(data);
+    },"engine_speed").then(function(result) {
+        console.log("SUBSCRIBED TO can subscribe_by_event CHANGED");
+    });
+
+    lowcan.subscribe_by_event(function(data){
+        console.log("can subscribe_by_event car speed CHANGED");
+        console.log(data);
+    },"vehicle_speed").then(function(result) {
+        console.log("SUBSCRIBED TO can subscribe_by_event CHANGED");
+    });
+
+    lowcan.subscribe_by_event(function(data){
+        console.log("can subscribe_by_event fuel level CHANGED");
+        console.log(data);
+    },"fuel_level").then(function(result) {
+        console.log("SUBSCRIBED TO can subscribe_by_event CHANGED");
+    });
+
+    signalcomposer.subscribe_by_signal(function(data){
+        console.log("subscribe_by_signal CHANGED");
+        console.log(data);
+    },signal_engine_speed).then(function(result) {
+        console.log("SUBSCRIBED TO subscribe_by_signal CHANGED");
+    });
+
+    signalcomposer.subscribe_by_signal(function(data){
+        console.log("subscribe_by_signal CHANGED");
+        console.log(data);
+    },signal_vehicle_speed).then(function(result) {
+        console.log("SUBSCRIBED TO subscribe_by_signal CHANGED");
+    });
+
+    signalcomposer.subscribe_by_signal(function(data){
+        console.log("subscribe_by_signal CHANGED");
+        console.log(data);
+    },signal_fuel_level).then(function(result) {
+        console.log("SUBSCRIBED TO subscribe_by_signal CHANGED");
+    });
+
 }
 
 
