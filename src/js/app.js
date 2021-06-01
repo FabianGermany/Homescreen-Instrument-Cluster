@@ -30,6 +30,8 @@ var page = {
     }
 }
 
+var debug_container = document.getElementById('debug_id');
+
 
 export function show() {
     document.body.innerHTML = Mustache.render(template, page);
@@ -44,7 +46,7 @@ export function init() {
         Mustache.parse(template);
         show();
     }, function(error) {
-        console.error('ERRROR loading main template', error);
+        //console.error('ERRROR loading main template', error);
     });
 
     
@@ -62,9 +64,10 @@ export function init() {
 
     //obd diagnostic
     lowcan.subscribe_by_event(function(data){
-        console.log("can subscribe_by_event CHANGED");
-        console.log(data);
-        alert("Value changed.");
+        //console.log("can subscribe_by_event CHANGED");
+        //console.log(data);
+        //alert("Value changed.");
+        debug_container.innerHTML = data; //this is for debugging purposes
         if (data["name"] == "diagnostic_messages.engine.speed") {
             rpm_value_formatted = data["value"];
         }
@@ -75,7 +78,7 @@ export function init() {
             fuel.level = data["value"];
         }
     },"diagnostic_messages").then(function(result) {
-        console.log("SUBSCRIBED TO can subscribe_by_event CHANGED");
+        //console.log("SUBSCRIBED TO can subscribe_by_event CHANGED");
     });
 
     // vehicle_speed
