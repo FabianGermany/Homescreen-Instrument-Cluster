@@ -66,19 +66,19 @@ export function init() {
     //obd diagnostic
     lowcan.subscribe_by_event(function(data){
         //console.log("can subscribe_by_event CHANGED");
-        //console.log(data);
+        console.log(data);
         //alert("Value changed.");
-        debug_container.innerHTML = debug_counter;
-        debug_counter = debug_counter + 1; //= data; //this is for debugging purposes
-        if (data["name"] == "diagnostic_messages.engine.speed") {
-            rpm_value_formatted = data["value"];
-        }
-        else if (data["name"] == "diagnostic_messages.vehicle.speed") {
-            speed = data["value"];
-        }
-        else if (data["name"] == "diagnostic_messages.fuel.level") {
-            fuel.level = data["value"];
-        }
+        //debug_container.innerHTML = debug_counter;
+        //debug_counter = debug_counter + 1; //= data; //this is for debugging purposes
+        // if (data["name"] == "diagnostic_messages.engine.speed") {
+        //     rpm_value_formatted = data["value"];
+        // }
+        // else if (data["name"] == "diagnostic_messages.vehicle.speed") {
+        //     speed = data["value"];
+        // }
+        // else if (data["name"] == "diagnostic_messages.fuel.level") {
+        //     fuel.level = data["value"];
+        // }
     },"diagnostic_messages").then(function(result) {
         //console.log("SUBSCRIBED TO can subscribe_by_event CHANGED");
     });
