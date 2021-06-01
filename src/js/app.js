@@ -146,7 +146,34 @@ lowcan.subscribe_by_event(function(data){
 }
 
 
+export function simulate() {
+    console.log('SIMULATE');
+    var counter = 0;
+    var interval = setInterval(function() {
+        counter ++;
+        if( page.speed < 60 ) {
+            page.speed += Math.floor(Math.random()*10);
+            if( page.rpm.value < 80/100*5000 ) {
+                page.rpm.value += Math.floor(Math.random()*25);
+            } else {
+                page.rpm.value = 40/100*5000;
+            }
+        } else if (Math.random() > 0.5 ) {
+            page.speed += Math.floor(Math.random()*10);
+            page.rpm.value = Math.min(80, Math.floor(Math.random()*90))/100*5000;
+        } else {
+            page.speed -= Math.floor(Math.random()*10);
+            page.rpm.value = Math.min(80, Math.floor(Math.random()*90))/100*5000;
+        }
 
+        page.rpm_value_formatted = niceFormat(page.rpm.value);
 
+        show();
+
+        if( counter > 600 ) {
+            clearInterval(interval);
+        }
+    }, 1000);
+}
 
 
