@@ -30,14 +30,15 @@ var page = {
     }
 }
 
-var debug_container = document.getElementById('debug_id');
-
+var debug_container;
+var debug_counter = 0;
 
 export function show() {
     document.body.innerHTML = Mustache.render(template, page);
     network.init(document.getElementById('NetworkContainer'));
     apps.init(document.getElementById('AppsContainer'));
     time.init(document.getElementById('TimeContainer'));
+    debug_container = document.getElementById('debug_id');
 }
 
 export function init() {
@@ -67,7 +68,8 @@ export function init() {
         //console.log("can subscribe_by_event CHANGED");
         //console.log(data);
         //alert("Value changed.");
-        debug_container.innerHTML = data; //this is for debugging purposes
+        debug_container.innerHTML = debug_counter;
+        debug_counter = debug_counter + 1; //= data; //this is for debugging purposes
         if (data["name"] == "diagnostic_messages.engine.speed") {
             rpm_value_formatted = data["value"];
         }
