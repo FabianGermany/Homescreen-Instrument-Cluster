@@ -3,8 +3,8 @@
   <name>Homescreen</name>
   <icon src="icon.svg"/>
   <content src="index.html" type="text/html"/>
-  <description>HTML5 Homescreen demo</description>
-  <author>Igalia, S.L.</author>
+  <description>HTML5 Homescreen</description>
+  <author>Fabian Luettel, Hochschule Reutlingen; Igalia, S.L.</author>
   <license>APL 2.0</license>
   <surface role="panel" panel="left"/>
   <window width="218"/>
@@ -19,6 +19,7 @@
   </feature>
   <feature name="urn:AGL:widget:required-api">
     <param name="homescreen" value="ws" />
+    <param name="low-can" value="ws" />
     <param name="network-manager" value="ws" />
     <param name="weather" value="ws" />
     <param name="Bluetooth-Manager" value="ws" />

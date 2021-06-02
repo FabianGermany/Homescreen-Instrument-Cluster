@@ -147,9 +147,9 @@ lowcan.subscribe_by_event(function(data){
 
 
 export function simulate() {
-    console.log('SIMULATE');
     var counter = 0;
     var interval = setInterval(function() {
+        console.log("SIMULATE");
         counter ++;
         if( page.speed < 60 ) {
             page.speed += Math.floor(Math.random()*10);
@@ -164,6 +164,16 @@ export function simulate() {
         } else {
             page.speed -= Math.floor(Math.random()*10);
             page.rpm.value = Math.min(80, Math.floor(Math.random()*90))/100*5000;
+        }
+
+        if(page.fuel.level > 0) {
+            if(counter == 100) {
+                page.fuel.level = page.fuel.level -1;
+            }
+        }
+
+        else {
+            page.fuel.level = 0;
         }
 
         page.rpm_value_formatted = niceFormat(page.rpm.value);
