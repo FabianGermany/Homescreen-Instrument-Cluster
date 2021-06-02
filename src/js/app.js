@@ -71,7 +71,7 @@ export function CANinit() {
 
     lowcan.subscribe_by_event(function(data){
         //console.log("can subscribe_by_event CHANGED");
-        console.log(data);
+        //console.log(data);
         //alert("Value changed.");
         //debug_container.innerHTML = debug_counter;
         //debug_counter = debug_counter + 1; //= data; //this is for debugging purposes
@@ -150,7 +150,7 @@ export function CANinit() {
 export function simulate() {
     var counter = 0;
     var interval = setInterval(function() {
-        console.log("SIMULATE");
+        //console.log("SIMULATE");
         counter ++;
         if( page.speed < 60 ) {
             page.speed += Math.floor(Math.random()*10);

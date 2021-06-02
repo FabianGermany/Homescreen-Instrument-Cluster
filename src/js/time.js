@@ -56,7 +56,7 @@ function update() {
             page.weather = result;
             show();
         }, function(error) {
-            console.error(error);
+            //console.error(error);
             show();
         });
     } else {
@@ -78,7 +78,7 @@ export function init(node) {
         update();
         initInterval();
     }, function(error) {
-        console.error('ERRROR loading main template', error);
+        //console.error('ERRROR loading main template', error);
     });
 }
 

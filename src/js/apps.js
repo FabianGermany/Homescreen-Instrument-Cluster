@@ -33,7 +33,7 @@ function load_application_list() {
 
                 if( app.id === configjson.launch ) {
                     afmMain.start(internalApp.id).then(function(result) {
-                        console.log("success: " + result);
+                        //console.log("success: " + result);
                     });
                 }
             }
@@ -46,7 +46,7 @@ function load_application_list() {
 
 export function start(appId) {
     homescreen.showWindow(appId.split('@')[0]).then(function(result) {
-        console.log("success: " + result);
+        //console.log("success: " + result);
     });
 }
 
@@ -57,6 +57,6 @@ export function init(node) {
         Mustache.parse(template);
         load_application_list();
     }, function(error) {
-        console.error('ERRROR loading main template', error);
+        //console.error('ERRROR loading main template', error);
     });
 }

@@ -4,7 +4,7 @@ var configjson = require('../config.json');
 
 export function load() {
     afmMain.start(configjson.background).then(function(result) {
-        console.log("loading background: " + result);
+        //console.log("loading background: " + result);
     });
 }
 

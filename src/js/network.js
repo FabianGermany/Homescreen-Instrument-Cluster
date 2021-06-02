@@ -31,10 +31,10 @@ export function init(node) {
         Mustache.parse(template);
         load_network_state();
     }, function(error) {
-        console.error('ERRROR loading main template', error);
+        //console.error('ERRROR loading main template', error);
     });
 
     network.on_global_state(function(result) {
-        console.log('GLOBAL SATATE', result);
+        //console.log('GLOBAL SATATE', result);
     });
 }
