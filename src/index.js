@@ -30,3 +30,4 @@ api.init();
 background.load();
 app.init();
 //app.simulate(); //simulate by using changing fake values for rpm etc.
+app.CANinit();

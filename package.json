@@ -37,7 +37,7 @@
     },
     "dependencies": {
         "bootstrap": "4.4.1",
-        "agl-js-api": "https://github.com/AGL-web-applications/agl-js-api.git#master",
+        "agl-js-api": "https://github.com/walzert/agl-js-api#master",
         "mustache": "^3.1.0"
     }
 }
