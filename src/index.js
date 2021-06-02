@@ -29,4 +29,4 @@ window.time = time;
 api.init();
 background.load();
 app.init();
-app.simulate();
+//app.simulate(); //simulate by using changing fake values for rpm etc.

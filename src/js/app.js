@@ -76,15 +76,17 @@ lowcan.subscribe_by_event(function(data){
     //alert("Value changed.");
     //debug_container.innerHTML = debug_counter;
     //debug_counter = debug_counter + 1; //= data; //this is for debugging purposes
-    // if (data["name"] == "diagnostic_messages.engine.speed") {
-    //     rpm_value_formatted = data["value"];
-    // }
-    // else if (data["name"] == "diagnostic_messages.vehicle.speed") {
-    //     speed = data["value"];
-    // }
-    // else if (data["name"] == "diagnostic_messages.fuel.level") {
-    //     fuel.level = data["value"];
-    // }
+    if (data["name"] == "diagnostic_messages.engine.speed") {
+        page.rpm.value = data["value"];
+    }
+    else if (data["name"] == "diagnostic_messages.vehicle.speed") {
+        page.speed = data["value"];
+    }
+    else if (data["name"] == "diagnostic_messages.fuel.level") {
+        page.fuel.level = data["value"];
+    }
+    page.rpm_value_formatted = niceFormat(page.rpm.value);
+    show();
 },"diagnostic_messages").then(function(result) {
     //console.log("SUBSCRIBED TO can subscribe_by_event CHANGED");
 });
