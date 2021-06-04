@@ -54,6 +54,22 @@ export function init() {
 }
 
 
+function myHandler(data)
+{
+    if (data["name"] == "diagnostic_messages.engine.speed") {
+        page.rpm.value = data["value"];
+    }
+    else if (data["name"] == "diagnostic_messages.vehicle.speed") {
+        page.speed = data["value"];
+    }
+    else if (data["name"] == "diagnostic_messages.fuel.level") {
+        page.fuel.level = data["value"];
+    }
+    page.rpm_value_formatted = niceFormat(page.rpm.value);
+    show();
+}
+
+
 //obd diagnostic
 export function CANinit() {
 
@@ -69,9 +85,13 @@ export function CANinit() {
     // console.log(lowcan.get_list());
     // console.log(lowcan.get_signal("messages.engine.speed"));
 
+
+    //lowcan.subscribe_by_event(myHandler,"steering_wheel.next") //TODO here...
+
     lowcan.subscribe_by_event(function(data){
         //console.log("can subscribe_by_event CHANGED");
         //console.log(data);
+        console.info(data);
         //alert("Value changed.");
         //debug_container.innerHTML = debug_counter;
         //debug_counter = debug_counter + 1; //= data; //this is for debugging purposes
