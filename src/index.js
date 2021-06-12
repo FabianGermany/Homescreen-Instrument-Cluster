@@ -14,15 +14,17 @@
  * limitations under the License.
  */
 
-/* CSS */
-import './styles/app.scss';
-
+/* JS */
 import { api } from 'agl-js-api';
 
 import * as app from './js/app';
 import * as apps from './js/apps';
 import * as time from './js/time';
 import * as background from './js/background';
+
+
+/* CSS */
+import './styles/app.scss';
 
 window.apps = apps;
 window.time = time;
