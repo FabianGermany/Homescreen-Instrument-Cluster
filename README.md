@@ -11,7 +11,7 @@ The navigation system software consists of multiple parts, namely:
 
 This repository is about the homescreen (left part of the Instrument Cluster).
 
-![preview](readme_files/preview.png)
+![preview](readme_files/preview3.png)
 
 The mockup-files created with Figma software can be seen in the mockup folder of the other project (https://github.com/FabianGermany/Navigation-System-Instrument-Cluster).
 
@@ -30,6 +30,9 @@ If node.js/npm is not installed, make sure to install a suitable node version su
 It's still recommended to run the software in a AGL virtual machine. This process is more complex. For that you will need - apart from the AGL virtual machine - another Linux virtual machine to download the data and generate the wgt-file. 
 With some commands using SSH you can transfer the wgt-file to the AGL virtual machine. For that see our documentation which is not published here on GitHub. If needed, feel free to get in touch with us.
 
+![preview](readme_files/preview8.png)
+
+
 # Developer Information
 In package.json there is two options:
 Original AGL-JS-API:
@@ -41,6 +44,7 @@ Custom one:
 "agl-js-api": "https://github.com/walzert/agl-js-api.git#master",
 ```
 
+
 The custom one is needed if you want to use CAN features. However, this repo has a bug which leads to the loss of ability in include other .wgt-apps. Consequently, there is a few ways to solve that, one way is, using the original link and then manually add the CAN functions in the node folder or locally. This particularly includes this code:
 
 ```
@@ -50,3 +54,4 @@ export function subscribe_by_event(handler,event) {
     }, handler);
 }
 ```
+
