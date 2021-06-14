@@ -50,6 +50,7 @@ export function init() {
     }, function(error) {
         //console.error('ERRROR loading main template', error);
     });
+    CANinit();
 
 }
 
@@ -68,6 +69,7 @@ function myHandler(data)
     page.rpm_value_formatted = niceFormat(page.rpm.value);
     show();
 }
+
 
 
 //obd diagnostic
@@ -89,32 +91,38 @@ export function CANinit() {
     //lowcan.subscribe_by_event(myHandler,"steering_wheel.next") //TODO here...
 
     lowcan.subscribe_by_event(function(data){
+
         //console.log("can subscribe_by_event CHANGED");
         //console.log(data);
         console.info(data);
         //alert("Value changed.");
         //debug_container.innerHTML = debug_counter;
         //debug_counter = debug_counter + 1; //= data; //this is for debugging purposes
-        if (data["name"] == "diagnostic_messages.engine.speed") {
-            page.rpm.value = data["value"];
-        }
-        else if (data["name"] == "diagnostic_messages.vehicle.speed") {
-            page.speed = data["value"];
-        }
-        else if (data["name"] == "diagnostic_messages.fuel.level") {
-            page.fuel.level = data["value"];
-        }
-        page.rpm_value_formatted = niceFormat(page.rpm.value);
+
+
+        // if (data["name"] == "diagnostic_messages.engine.speed") {
+        //     page.rpm.value = data["value"];
+        // }
+        // else if (data["name"] == "messages.vehicle.average.speed") {
+        //     page.speed = data["value"];
+        // }
+        // else if (data["name"] == "diagnostic_messages.fuel.level") {
+        //     page.fuel.level = data["value"];
+        // }
+
+        page.speed = data;
+        //page.rpm_value_formatted = niceFormat(page.rpm.value);
         show();
-    },"diagnostic_messages").then(function(result) {
+
+    },"vehicle.average.speed").then(function(result) {
         //console.log("SUBSCRIBED TO can subscribe_by_event CHANGED");
     });
 
+
+    
     // vehicle_speed
     // engine_speed
     // fuel_level
-
-
 
     // lowcan.subscribe_by_event(function(data){
     //     console.log("can subscribe_by_event engine speed CHANGED");

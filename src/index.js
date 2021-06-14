@@ -31,5 +31,5 @@ window.time = time;
 api.init();
 background.load();
 app.init();
-//app.simulate(); //simulate by using changing fake values for rpm etc.
-app.CANinit();
+app.simulate(); //simulate by using changing values for rpm etc.
+//app.CANinit();
