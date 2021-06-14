@@ -50,7 +50,7 @@ export function init() {
     }, function(error) {
         //console.error('ERRROR loading main template', error);
     });
-    CANinit();
+    //CANinit();
 
 }
 
@@ -119,7 +119,7 @@ export function CANinit() {
     });
 
 
-    
+
     // vehicle_speed
     // engine_speed
     // fuel_level
@@ -212,7 +212,7 @@ export function simulate() {
         if( counter > 600 ) {
             clearInterval(interval);
         }
-    }, 1000);
+    }, 1500);
 }
 
 
