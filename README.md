@@ -1,4 +1,28 @@
-# About
+# Information panel for a navigation system on Automotive Grade Linux (AGL) operating system
+
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about">About</a>
+    </li>
+    <li>
+      <a href="#install-and-run-app">Install and run app</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#preparations">Preparations</a></li>
+        <li><a href="#launch-in-browser">Launch in browser</a></li>
+        <li><a href="#launch-in-agl-virtual-machine">Launch in AGL virtual machine</a></li>
+      </ul>
+    </li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#developer-information">Developer Information</a></li>
+  </ol>
+</details>
+
+
+
+## About
 
 <!--![preview](readme_files/preview8.png)-->
 ![preview](readme_files/Animation_Snippet.gif)
@@ -22,32 +46,106 @@ The mockup-files created with Figma software can be seen in the mockup folder of
 
 
 
-# Install and run app
 
-Providing node.js/npm is installed, this is how to run this software part (repository) in a browser:
-```
-npm install
-npm run build
-npm start
-```
-Then type 
+## Install and run app
+
+This is how to run this software part (repository) in a browser and how to run it inside the AGL virtual machine.
+
+### Prerequisites
+
+For the following steps, you need node.js/npm. If node.js/npm is not installed, make sure to install a suitable node version such as v12.18.4. Very recent versions may not compatible with the remaining software.
+
+This app can run in a browser since it's a HTML app. However, it's recommended to run the software in a AGL virtual machine. For that you need to create an AGL virtual machine using VirtualBox software and find a way to connect this machine to your own operating system. One way is SSH/SCP.
+
+
+### Preparations
+
+1\. Open a terminal or shell in your operation system
+<!--Or in the Linux VM: ssh -p 2222 agl-devel@localhost-->
+   
+2\. Clone this repo:
+   ```
+   git clone https://github.com/FabianGermany/Homescreen-Instrument-Cluster.git
+   ```
+
+3\. Change the directory:
+   ```
+   cd Homescreen-Instrument-Cluster
+   ```
+
+4\. Install npm packages:
+   ```
+   npm install
+   ```
+5\. Build app and create .wgt-file:
+   ```
+   npm run build
+   ```
+
+### Launch in browser
+
+
+6\. Launch the app:
+   ```
+   npm start
+   ```
+7\. Type 
 ```http://localhost:9001/ ```
-in a browser such as Firefox Developer Edition.
-
-If node.js/npm is not installed, make sure to install a suitable node version such as v12.18.4. Very recent versions may not compatible with the remaining software!
-
-However, it's recommended to run the software in a AGL virtual machine. This process is more complex. For that you will need - apart from the AGL virtual machine - another Linux virtual machine to download the data and generate the wgt-file. With some commands using SSH/SCP you can transfer the wgt-file from the Linux machine to the AGL virtual machine. Finally, you can install this wgt-file on AGL and reboot the machine. 
-
-For more information, see our documentation which is not published here on GitHub. If you need the documentation, feel free to get in touch with us.
+in a browser such as Firefox Developer Edition. 
+The app will run in the browser now.
 
 
+### Launch in AGL virtual machine
 
-# License
-For License information please also see the license file and the potential other license files inside the used packages.
+8\. Change the directory in order to see the .wgt file:
+
+   ```
+   cd package
+   ```
+
+
+9\. Transfer the .wgt file to the AGL system. Depending on your operating system and on how your AGL virtual machine is connected to your current operation system, one way might be using SSH/SCP such as:
+
+   ```
+   scp -P 2223 homescreen.wgt root@[IP-Address]:/tmp/
+   ```
+Instead of ```[IP-Address] ``` use your own IP address.
+For more information, see our documentation which is not published here on GitHub. If you need the documentation, feel free to get in touch with us. 
 
 
 
-# Developer Information
+
+10\. Open another terminal in your operating system
+
+11\. Log into your AGL machine. Depending how your AGL virtual machine is connected to your current operating system, one way might be:
+   ```
+   ssh -p 2223 root@localhost
+   ```
+
+12\. Change directory:
+   ```
+   cd /tmp/
+   ```
+
+
+13\. Install .wgt file on AGL:
+   ```
+   afm-util install homescreen.wgt
+   ```
+14\. Reboot AGL machine. It's recommended to reboot at least twice.
+   ```
+   reboot
+   ```
+
+Now the AGL machine will run with the new app/functionality.
+
+
+
+## License
+For License information please also see the license file and potential other license files inside the used packages.
+This app is based on an [AGL template](https://git.automotivelinux.org/apps/html5-homescreen/tree/src). To see more information about the packages of the [other app component](https://github.com/FabianGermany/Navigation-System-Instrument-Cluster) see the license section over there.
+
+## Developer Information
 In package.json there is two options:
 Original AGL-JS-API:
 ```
